@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            <router-link to="/user/foo">user1</router-link>
+            <router-link to="/user/bar">user2</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        const User = {
+            template: '<div>User{{$route.params.id}}</div>'
+        }
+        const router = new VueRouter({
+            routes: [
+                // 动态路径参数 以冒号开头
+                {
+                    path: '/user/:id',
+                    component: User
+                }
+            ]
+        })
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+
+                }
+            },
+            router
+        })
+    </script>
+</body>
+
+</html>
