@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{b}}
+        <button @click='b++'>改变值</button>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        var o = {
+            el: '#app',
+            data() {
+                return {
+                    a: 1,
+                    b: 2,
+                    c: 3,
+                    d: 4,
+                    e: {
+                        f: {
+                            g: 5
+                        }
+                    }
+                }
+            },
+            watch:{
+                'a':function(val,oldVal){
+                    console.log('new:%s,old:%s',val,oldVal)
+                },
+                'b':'someMethod',//值是方法名
+                // 'c': this,//this指向的是window
+                
+            },
+            methods:{
+                someMethod(val,oldVal){
+                    console.log('new:%s,old:%s',val,oldVal)
+                }
+            }
+        }
+        $vm.b = watch.b
+        $vm.b()
+        let v = new Vue(o)
+        
+    </script>
+</body>
+
+</html>

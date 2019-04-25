@@ -19,8 +19,9 @@
     <script src="../vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script>
+        //为什么在User组件中不用this,也能拿到$route
         const User = {
-            template: '<div>User{{$route.params.id}}</div>'
+            template: '<div>{{this.$route.params.id}}</div>'
         }
         const router = new VueRouter({
             routes: [
@@ -33,12 +34,7 @@
         })
         new Vue({
             el: '#app',
-            data() {
-                return {
-
-                }
-            },
-            router
+            router,
         })
     </script>
 </body>
