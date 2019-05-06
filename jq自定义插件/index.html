@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .fileUpload{
+            display: inline-block;
+            padding: 3px 10px;
+            border:1px solid red;
+            font-size: 16px;
+            /* background: #ccc; */
+            color: black;
+        }
+        .fileUpload-box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+        .fileToUpload {
+            /* width: 200px;
+            height: 200px;
+            border:1px solid green; */
+            margin-bottom: 20px;
+        }
+        .submit {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            background: #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <span class="fileUpload">上传头像</span>
+    <div class="fileUpload-box">
+
+    </div> -->
+    <div class="fileUpload">
+        <input type="file" class="fileToUpload">
+        <div class="submit">提交</div>
+    </div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="./$.fn.upload.js"></script>
+    <script>
+        $('.fileUpload').upload({
+            url: 'https://www.easy-mock.com/mock/5ae9d1dd0a492d2535b91366/hfBeam-tims-api/upload',
+            success(res) {
+                console.log(res)
+            }
+        })
+    </script>
+</body>
+
+</html>

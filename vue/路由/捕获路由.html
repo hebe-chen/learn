@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/user-ha/foo">Go to Foo</router-link>
+        <br>
+        <router-link to="/user-ho/bar">Go to Bar</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        const User = {
+            template:'<div>{{$route.params}}</div>'
+        }
+        const routes = [
+            {path:'/user-*/:id',component:User}
+        ]
+        const router = new VueRouter({
+            routes
+        })
+
+        new Vue({
+            el:'#app',
+            router: router,
+
+            mounted() {
+                this.$route
+                this.$router
+            }
+        })
+    </script>
+</body>
+</html>
