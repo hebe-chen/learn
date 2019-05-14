@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id='app'>
+      <helloworld/>
+    </div>
+    <div id="app2"></div>
+  <script>
+    /*
+    *使用组件有3种方式
+    *1.Vue.component 注册了一个全局组件，在div#app元素内通过 <helloworld/> 标签直接使用
+    *2.Vue.component 注册了一个全局组件，通过new app().$mount('#app')来手动实现挂载
+    *3.Vue.component 注册了一个全局组件，通过创建Vue实例来使用，添加template: "<helloworld/>  /  <helloworld>  /   <helloworld></helloworld>"
+    *
+    *
+    */
+    // 第一种方式
+    // Vue.component('helloworld',{
+    //   template:'<h1>{{msg}}</h1>',
+    //   data () {
+    //     return {
+    //       msg:'Hello Vue.js!'
+    //     }
+    //   }
+    // })
+    // new Vue({
+    //   el:'#app'
+    // })
+
+
+    // 第二种方式
+    // var app =  Vue.component('helloworld',{
+    //   template:'<h1>{{msg}}</h1>',
+    //   data () {
+    //     return {
+    //       msg:'Hello Vue.js!'
+    //     }
+    //   }
+    // })
+    // // 创建 app 实例，并挂载到一个元素上
+    // new app().$mount('#app2')
+
+    // 第三种方式
+    Vue.component('helloworld',{
+      template:'<h1>{{msg}}</h1>',
+      data () {
+        return {
+          msg:'Hello Vue.js!'
+        }
+      }
+    })
+
+    new Vue({
+      el:'#app2',
+      template:'<helloworld/>'
+    })
+    
+
+
+
+  </script>
+  </div>
+</html>
