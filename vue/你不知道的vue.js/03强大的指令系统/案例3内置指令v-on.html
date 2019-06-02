@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id='app'>
+      <button v-on:click="hanleClick('确定',$event)">确定</button>
+      <button v-on:click="hanleClick('取消',$event)">取消</button>
+      {{msg}}
+    </div>
+  <script>
+    // new Vue({
+    //   el:'#app',
+    //   data () {
+    //     return {
+    //       btnText:''
+    //     }
+    //   },
+    //   computed: {
+    //     msg(){
+    //       return this.btnText ? `点击了${this.btnText}按钮` : '您还没点击任何按钮'
+    //     }
+    //   },
+    //   methods: {
+    //     hanleClick(text,el){
+    //       this.btnText = text;
+    //     }
+    //   }
+    // })
+
+
+    new Vue({
+      el:'#app',
+      data () {
+        return {
+          msg:'您还没点击任何按钮'
+        }
+      },
+      methods: {
+        hanleClick(text,el){
+          this.msg = `点击了${text}按钮`;
+        }
+      }
+    })
+
+
+    
+  </script>
+  </div>
+</html>

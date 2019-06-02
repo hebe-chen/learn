@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="addItem">添加</button>
+    <ul>
+      <li v-for="(item,index) in list" v-bind:key="index">
+        <a v-bind:href="item.url">{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          count:1,
+          list: [{
+              name: 'Vuejs官网',
+              url: 'https://cn.vuejs.org'
+            },
+            {
+              name: 'Github',
+              url: 'https://github.com'
+            },
+            {
+              name: 'Yuga博客1',
+              url: 'https://yugasun.com'
+            }
+          ]
+        }
+      },
+      methods: {
+        addItem(){
+          this.count++;
+          this.list.push({
+            name: 'Yuga博客'+this.count,
+            url: 'https://yugasun.com'
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

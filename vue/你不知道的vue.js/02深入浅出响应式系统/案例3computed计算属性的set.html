@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id='app'>
+      <input type="button" v-on:click="changeName" value="改变名字">
+      <h2>{{username}}</h2>
+    </div>
+  <script>
+    // 计算属性是基于它依赖的值进行缓存的，如果它依赖的值没有发生改变，它自己就没法发生改变。
+    new Vue({
+      el:'#app',
+      data () {
+        return {
+          firstName: 'Yuga',
+          lastName: 'Sun'
+        }
+      },
+      computed: {
+        username:{
+          get:function(){
+            return this.firstName + ' ' + this.lastName
+          },
+          set:function(newVal){
+            var names = newVal.split(' ');
+            this.firstName = names[0];
+            this.lastName = names[1];
+          }
+        }
+      },
+      methods: {
+        changeName(){
+          if(this.username === 'Yuga Sun'){
+            this.username = 'Summer Wu'
+          }else{
+            this.username = 'Yuga Sun'
+          }
+        }
+      }
+    })
+  </script>
+  </div>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id='app'>
+      <ul>
+        <li v-for="item in 5">{{item}}</li>
+      </ul>
+    </div>
+  <script>
+    /*
+      Vue源码片段
+      if (typeof val === 'number') {
+        ret = new Array(val)
+        for (i = 0; i < val; i++) {
+          ret[i] = render(i + 1, i)
+        }
+      } 
+    */
+    new Vue({
+      el:'#app'
+    })
+  </script>
+  </div>
+</html>

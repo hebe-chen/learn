@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="app4"></div>
+
+  <div id="app5" v-helloworld="msg"></div>
+  <!-- <input type="text" id="app6" v-focus> -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    /*
+    * 案例1：Vue
+    */
+    // var app = new Vue({
+    //   el:'#app',
+    //   template:'<h1>{{msg}}</h1>',
+    //   data(){
+    //     return {
+    //       msg:'Hello Vue.js!'
+    //     }
+    //   }
+    // }) 
+
+
+    /*
+    * 案例2：Vue.extend
+    */
+    //  var app = Vue.extend({
+    //    template:'<h1>{{msg}}</h1>',
+    //    data(){
+    //      return {
+    //        msg:'hello Vue.js!'
+    //      }
+    //    }
+    //  })
+    // new app().$mount('#app')
+
+    /*
+    * 案例3：Vue.component
+    */ 
+    // var app = Vue.component('helloworld',{
+    //   template:'<h1>{{msg}}</h1>',
+    //   data () {
+    //     return {
+    //       msg:'hello world!'
+    //     }
+    //   }
+    // })
+    // new app().$mount('#app')
+
+
+    // new Vue({
+    //   el:'#app4',
+    //   template:'<helloworld>'
+    // })
+
+    /*
+    * 案例4：Vue.directive
+    */
+    // Vue.directive('helloworld',{
+    //   bind:function(el,binding){
+    //     console.log(el+';'+binding)
+    //     el.innerHTML = "<h1>"+binding.value+"</h1>"
+    //   }
+    // })
+    // new Vue({
+    //   el:'#app5',
+    //   data () {
+    //     return {
+    //       msg:'hello Vue.directive!'
+    //     }
+    //   }
+    // })
+
+
+    /*
+    *案例5 Vue.directive实现autofocus 
+    */
+    // Vue.directive('focus',{
+    //   inserted:function(el){
+    //     el.focus()
+    //   }
+    // })
+
+    // new Vue({
+    //   el:'#app6'
+    // })
+
+
+    /*
+    *案例6 Vue.compile
+    */
+    // var tpl = Vue.compile('<h1>{{msg}}</h1>');
+    // new Vue({
+    //   el:'#app',
+    //   data () {
+    //     return {
+    //       msg:'hello compile!'
+    //     }
+    //   },
+    //   render: tpl.render
+    // })
+
+
+    /*
+    *案例7 render
+    */
+    // new Vue({
+    //   el:'#app',
+    //   data(){
+    //     return{
+    //       msg:'hello render!'
+    //     }
+    //   },
+    //   render:function(creatElement){
+    //     return creatElement('h1',this.msg);
+    //   }
+    // })
+
+    
+
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    td {
+      border:1px solid #000;
+      width: 100px;
+      height: 30px;
+    }
+  </style>
+  
+    <script src = "./js/aight.min.js"></script>
+
+</head>
+
+<body>
+  <div>
+    <ul id="ul">
+      <li draggable="true">1</li>
+      <li draggable="true">2</li>
+      <li draggable="true">3</li>
+    </ul>
+    <table id="table" >
+      <tr id="tr">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  
+  <script>
+    var elDrag = null;
+    var liObjs = document.getElementById('ul').children;
+    var tdObjs = document.getElementById('tr').children;
+    
+    for (var i = 0; i < liObjs.length; i++) {
+      var liObj = liObjs[i];
+      liObj.onselectstart = function (event) {
+        var event = event || window.event; //获取事件对象
+        event.preventDefault();
+        event.stopPropagation();
+        var element = event .target || event .srcElement
+        element.dragDrop();
+      }
+      liObj.ondragstart = function(event){
+        // event.preventDefault();
+        elDrag = this;
+        console.log("拖动开始")
+      }
+      liObj.ondragend = function(event){
+        // event.preventDefault();
+        console.log("拖动结束")
+        elDrag = null;
+      }
+    }
+    for(var j = 0; j < tdObjs.length; j++){
+      var td = tdObjs[j];
+      td.ondragover = function(event){
+        var event = event || window.event; //获取事件对象
+        event.preventDefault();
+        console.log("目标over1")
+      }
+      td.ondragenter = function(event){
+        var event = event || window.event; //获取事件对象
+        event.preventDefault();
+        console.log("目标dragenter2")
+      }
+      td.ondrop = function(event){
+        var event = event || window.event; //获取事件对象
+        event.preventDefault();
+        console.log("目标drop3");
+        this.innerHTML = elDrag.innerHTML;
+      }
+    }
+
+  </script>
+
+ 
+</body>
+
+</html>

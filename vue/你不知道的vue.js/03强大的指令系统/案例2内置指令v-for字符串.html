@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <style>
+      span {
+        animation: flip-in 1s 0s ease-in-out both;
+      }
+      @keyframes flip-in {
+        0%{
+          opacity: 0;
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id='app'>
+      <span v-for="(item,index) in name" v-bind:style="{animationDelay:`${0.5 + index*0.3}s`}">{{item}}</span>
+      <!-- <span v-for="(item,index) in name" v-bind:style="{animationDelay:`${0.5 + index*0.3}`+'s'}">{{item}}</span> -->
+    </div>
+  <script>
+    // 注意style的属性值是字符串
+    new Vue({
+      el:'#app',
+      data () {
+        return {
+          name:'yugasun',
+          a:2
+        }
+      }
+    })
+  </script>
+  </div>
+</html>

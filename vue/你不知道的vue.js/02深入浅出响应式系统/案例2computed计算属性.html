@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <input type="button" v-on:click="addItem" value="添加">
+    <ul>
+      <li v-for="(item,index) in list">
+        <a v-bind:href="item.url">{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          count:1,
+          requestList: [
+            'Vuejs官网-https://cn.vuejs.org',
+            'Github-https://github.com',
+            'Yuga博客1-https://yugasun.com'
+          ]
+        }
+      },
+      computed:{
+        list:function(){
+          var list = [];
+          this.requestList.map(function(item,index){
+            var tempArr = item.split('-');
+            list.push({
+              name:tempArr[0],
+              url:tempArr[1]
+            })
+          })
+          return list;
+        }
+      },
+      methods: {
+        addItem(){
+          this.count++;
+          this.requestList.push('Yuga博客' + this.count + '-https://yugasun.com')
+        }
+      }
+    })
+  </script>
+  </div>
+
+</html>

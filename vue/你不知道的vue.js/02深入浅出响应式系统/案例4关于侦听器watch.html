@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id='app'>
+      <input type="button" v-on:click="changeName" value="改变名字">
+      <h2>{{username}}</h2>
+    </div>
+  <script>
+    // 监听属性是简单属性
+    // new Vue({
+    //   el:'#app',
+    //   data () {
+    //     return {
+    //       firstName: 'Yuga',
+    //       lastName: 'Sun',
+    //       username: 'Yuga Sun'
+    //     }
+    //   },
+    //   watch:{
+    //     firstName:function(val,oldVal){
+    //       this.username = val + ' ' + this.lastName
+    //     },
+    //     lastName:function(val,oldVal){
+    //       this.username = this.firstName + ' ' + val
+    //     }
+    //   },
+    //   methods: {
+    //     changeName(){
+    //       if(this.username === 'Yuga Sun'){
+    //         this.firstName = 'Summer';
+    //         this.lastName = 'Wu';
+    //       }else{
+    //         this.firstName = 'Yuga';
+    //         this.lastName = 'Sun';
+    //       }
+    //     }
+    //   }
+    // })
+
+    // 监听属性是对象
+    // 对于侦听的值是可以为一个对象的，它还有个 deep 属性，用来设置是否侦听内部属性的变化，
+    new Vue({
+      el:'#app',
+      data () {
+        return {
+          userInfo:{
+            firstName: 'Yuga',
+            lastName: 'Sun',
+          },
+          username: 'Yuga Sun'
+        }
+      },
+      watch:{
+        userInfo:{
+          deep:true,
+          handler:function(val,oldVal){
+            this.username = val.firstName + ' ' + val.lastName;
+          }
+        }
+      },
+      methods: {
+        changeName(){
+          if(this.username === 'Yuga Sun'){
+            this.userInfo.firstName = 'Summer';
+            this.userInfo.lastName = 'Wu';
+          }else{
+            this.userInfo.firstName = 'Yuga';
+            this.userInfo.lastName = 'Sun';
+          }
+        }
+      }
+    })
+
+
+    // 监听属性是对象属性访问
+    // var app = new Vue({
+    //   el: "#app",
+    //   data () {
+    //     return {
+    //       userinfo: {
+    //         firstName: 'Yuga',
+    //         lastName: 'Sun',
+    //       },
+    //       username: 'Yuga Sun'
+    //     }
+    //   },
+    //   watch: {
+    //     'userinfo.lastName': function (val, oldVal) {
+    //       this.username = this.userinfo.firstName + ' ' + val;
+    //     }
+    //   },
+    //   methods: {
+    //     changeName () {
+    //       if (this.username === 'Yuga Sun') {
+    //         this.userinfo.lastName = 'Wu'
+    //       } else {
+    //         this.userinfo.lastName = 'Sun'
+    //       }
+    //     }
+    //   }
+    // })
+  </script>
+  </div>
+</html>

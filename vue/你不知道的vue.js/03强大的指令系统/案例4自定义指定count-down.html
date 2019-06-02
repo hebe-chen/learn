@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app4">
+      <button v-on:click="startCount">开始倒计时</button>
+      <span data-count="5" v-count-down="60" v-if="show" style="font-size:16px;color: black">5</span>
+    </div>
+  <script>
+    new Vue({
+      el:'#app4',
+      data(){
+        return{
+          show:false,
+          timer:null
+        }
+      },
+      methods: {
+        startCount(){
+          console.log(this)
+          this.show = true;
+        }
+      },
+      directives:{
+        'count-down':{
+          bind:function(el){
+            console.log(el)
+            console.log(this)
+            let count = parseInt(el.getAttribute('data-count'));
+            this.timer = setInterval(function(){
+              if(count<=0){
+                clearInterval(this.timer);
+                this.timer = null;
+              }else{
+                count--;
+                el.innerHTML = count;
+                el.setAttribute('data-count',count)
+              }
+            },1000)
+          }
+        }
+      }
+    })
+
+
+    // var app4 = new Vue({
+    //   el: '#app4',
+    //   data () {
+    //     return {
+    //       show: false, // 是否显示倒计时
+    //     }
+    //   },
+    //   methods: {
+    //     startCount: function () {
+    //       this.show = true
+    //     }
+    //   },
+    //   directives: {
+    //     'count-down': {
+    //       bind: function (el, binding, vnode) {
+    //         let count = parseInt(el.getAttribute('data-count'))
+    //         if (this.timer) {
+    //           clearInterval(this.timer)
+    //           this.timer = null
+    //         }
+    //         // 大家可以推测下这里的 this 指什么？
+    //         this.timer = setInterval(function () {
+    //           if (count <= 0) {
+    //             clearInterval(this.timer)
+    //             this.timer = null
+    //           } else {
+    //             count--
+    //             el.innerHTML = count
+    //             el.setAttribute('data-count', count)
+    //           }
+    //         }, 1000)
+    //       }
+    //     }
+    //   }
+    // })
+  </script>
+  </div>
+</html>
